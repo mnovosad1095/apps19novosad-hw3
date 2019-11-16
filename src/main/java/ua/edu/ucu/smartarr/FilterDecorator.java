@@ -1,5 +1,7 @@
 package ua.edu.ucu.smartarr;
 
+import java.util.ArrayList;
+
 import ua.edu.ucu.functions.MyPredicate;
 
 // Tests every element and removes it if it doesn't satisfy MyPredicate
@@ -16,33 +18,21 @@ public class FilterDecorator extends SmartArrayDecorator{
     }
 
     private Object[] filter(Object[] arr) {
-        int filteredObjects = 0;
-        int j = 0;
-        int len = smartArray.size();
+        int len = arr.length;
+        ArrayList<Object> newArray = new ArrayList<Object>();
 
         for (int i = 0; i < len; i++) {
-            if (predicate.test(arr[i])) {
-                filteredObjects++;
-            } else {
-                arr[i] = null;
+            if (predicate.test(arr[i])){
+                newArray.add(arr[i]);
             }
         }
 
-        Object[] newArray = new Object[filteredObjects];
-        
-        for (int i = 0; i < len; i++) {
-            if (arr[i] != null) {
-                newArray[j] = arr[i];
-                j++;
-            }
-        }
-
-        return newArray;
+        return newArray.toArray();
     }
 
     @Override
     public Object[] toArray() {
-        return arr;
+        return arr.clone();
     }
 
     @Override

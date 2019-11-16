@@ -12,20 +12,19 @@ public class MapDecorator extends SmartArrayDecorator {
         super(smartArray);
         size = smartArray.size();
         myFunction = func;
-        arr = map(smartArray.toArray());
+        arr = smartArray.toArray();
+        map(arr);
     }
 
-    private Object[] map(Object[] array) {
+    private void map(Object[] array) {
         for (int i = 0; i < size; i++) {
             array[i] = myFunction.apply(array[i]);
         }
-
-        return array;
     }
 
     @Override
     public Object[] toArray() {
-        return arr;
+        return arr.clone();
     }
     
     @Override

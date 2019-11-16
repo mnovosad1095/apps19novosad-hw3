@@ -6,13 +6,13 @@ public class BaseArray implements SmartArray {
     private int size;
 
     public BaseArray(Object[] els) {
-        elements = els;
+        elements = els.clone();
         size = els.length;
     }
 
     @Override
     public Object[] toArray() {
-        return elements;
+        return elements.clone();
     }
 
     @Override

@@ -8,18 +8,17 @@ import ua.edu.ucu.functions.MyComparator;
 public class SortDecorator extends SmartArrayDecorator {
     protected MyComparator comparator;
     private Object[] arr;
-    int size;
 
     public SortDecorator(SmartArray smartArray, MyComparator comp) {
         super(smartArray);
         comparator = comp;
         arr = smartArray.toArray();
-        Arrays.sort(smartArray.toArray(), comparator);
+        Arrays.sort(arr, comparator);
     }
 
     @Override
     public Object[] toArray() {
-        return arr;
+        return arr.clone();
     }
 
     @Override
