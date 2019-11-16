@@ -23,15 +23,15 @@ public class SmartArrayApp {
             }
 
             @Override
-            public String operationDescription(){
+            public String operationDescription() {
                 return " if elements are positive";
             }
         };
 
         MyComparator cmp = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Integer) o1) - ((Integer) o2);
+            public int compare(Object a, Object b) {
+                return ((Integer) a) - ((Integer) b);
             }
         };
 
@@ -70,12 +70,14 @@ public class SmartArrayApp {
         // Hint: to convert Object[] to String[] - use the following code
         //Object[] result = studentSmartArray.toArray();
         //return Arrays.copyOf(result, result.length, String[].class);
-        MyPredicate pred = new MyPredicate(){
+        MyPredicate pred = new MyPredicate() {
+            final int GPA = 4;
+            final int YEAR = 2;
         
             @Override
             public boolean test(Object t) {
                 Student st = (Student) t;
-                return st.getYear() == 2 && st.getGPA() >= 4.0;
+                return st.getYear() == YEAR && st.getGPA() >= GPA;
             }
         
             @Override
@@ -84,22 +86,22 @@ public class SmartArrayApp {
             }
         };
 
-        MyComparator comparator = new MyComparator(){
+        MyComparator comparator = new MyComparator() {
         
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Student) o1).getSurname().compareTo(((Student)o2).getSurname());
+            public int compare(Object a, Object b) {
+                return ((Student) a).getSurname().compareTo(((Student)b).getSurname());
             }
         };
 
-        MyFunction function = new MyFunction(){
+        MyFunction function = new MyFunction() {
         
-            @Override
+            @Override 
             public String operationDescription() {
                 return " Convert to String";
             }
         
-            @Override
+            @Override 
             public Object apply(Object t) {
                 return ((Student) t).getSurname() + " " + ((Student)t).getName();
             }

@@ -5,25 +5,25 @@ import java.util.ArrayList;
 import ua.edu.ucu.functions.MyPredicate;
 
 // Tests every element and removes it if it doesn't satisfy MyPredicate
-public class FilterDecorator extends SmartArrayDecorator{
-    MyPredicate predicate;
+public class FilterDecorator extends SmartArrayDecorator {
+    private MyPredicate predicate;
     private Object[] arr;
-    int size;
+    private int size;
 
-    public FilterDecorator(SmartArray smartArray, MyPredicate pred){
+    public FilterDecorator(SmartArray smartArray, MyPredicate pred) {
         super(smartArray);
         predicate = pred;
         arr = filter(smartArray.toArray());
         size = arr.length;
     }
 
-    private Object[] filter(Object[] arr) {
-        int len = arr.length;
+    private Object[] filter(Object[] array) {
+        int len = array.length;
         ArrayList<Object> newArray = new ArrayList<Object>();
 
         for (int i = 0; i < len; i++) {
-            if (predicate.test(arr[i])){
-                newArray.add(arr[i]);
+            if (predicate.test(array[i])) {
+                newArray.add(array[i]);
             }
         }
 
@@ -42,7 +42,9 @@ public class FilterDecorator extends SmartArrayDecorator{
 
     @Override
     public String operationDescription() {
-        return smartArray.operationDescription() + " fileterd with predicate" + predicate.operationDescription();
+        return smartArray.operationDescription() +
+         " fileterd with predicate" + 
+         predicate.operationDescription();
     }
    
 }

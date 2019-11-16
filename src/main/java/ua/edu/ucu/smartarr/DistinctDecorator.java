@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class DistinctDecorator extends SmartArrayDecorator {
     private Object[] arr;
 
-    public DistinctDecorator(SmartArray smartArray){
+    public DistinctDecorator(SmartArray smartArray) {
         super(smartArray);
         arr = removeDuplicates(smartArray.toArray());
     }
