@@ -1,6 +1,6 @@
 package ua.edu.ucu.smartarr;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import ua.edu.ucu.functions.MyPredicate;
 
@@ -8,36 +8,26 @@ import ua.edu.ucu.functions.MyPredicate;
 public class FilterDecorator extends SmartArrayDecorator {
     private MyPredicate predicate;
     private Object[] arr;
-    private int size;
 
     public FilterDecorator(SmartArray smartArray, MyPredicate pred) {
         super(smartArray);
         predicate = pred;
-        arr = filter(smartArray.toArray());
-        size = arr.length;
+        filter();
     }
 
-    private Object[] filter(Object[] array) {
-        int len = array.length;
-        ArrayList<Object> newArray = new ArrayList<Object>();
-
-        for (int i = 0; i < len; i++) {
-            if (predicate.test(array[i])) {
-                newArray.add(array[i]);
-            }
-        }
-
-        return newArray.toArray();
+    private void filter() {
+        arr = Arrays.asList(arr).stream().filter(predicate::test).toArray();
     }
 
     @Override
     public Object[] toArray() {
+        filter();
         return arr.clone();
     }
 
     @Override
     public int size() {
-        return size;
+        return arr.length;
     }
 
     @Override

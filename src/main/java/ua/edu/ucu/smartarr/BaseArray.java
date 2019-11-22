@@ -3,11 +3,9 @@ package ua.edu.ucu.smartarr;
 // Base array for decorators
 public class BaseArray implements SmartArray {
     private Object[] elements;
-    private int size;
 
     public BaseArray(Object[] els) {
         elements = els.clone();
-        size = els.length;
     }
 
     @Override
@@ -17,11 +15,13 @@ public class BaseArray implements SmartArray {
 
     @Override
     public int size() {
-        return size;
+        return elements.length;
     }
 
     @Override
     public String operationDescription() {
         return "Base Array";
     }
+
+    public void setValue(int index){elements[index] = 0;};
 }

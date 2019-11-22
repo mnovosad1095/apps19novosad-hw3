@@ -13,6 +13,30 @@ import ua.edu.ucu.smartarr.SortDecorator;
 
 public class SmartArrayApp {
 
+    public static void main(String[] args) {
+            BaseArray a = new BaseArray(new Integer[]{1,2,3,4,5});
+            MyFunction mf = new MyFunction(){
+            
+                @Override
+                public String operationDescription() {
+                    return " Squared";
+                }
+            
+                @Override
+                public Object apply(Object t) {
+                    return (Integer)t*(Integer)t;
+                }
+            };
+            MapDecorator b = new MapDecorator(a, mf);
+            System.out.println(Arrays.toString(a.toArray()));
+            System.out.println(Arrays.toString(b.toArray()));
+    
+            a.setValue(0); // що це працювало додайте метод setValue(int index){array[index] = 0};
+            System.out.println(Arrays.toString(a.toArray()));
+            System.out.println(Arrays.toString(b.toArray()));
+    
+    }
+
     public static Integer[]
             filterPositiveIntegersSortAndMultiplyBy2(Integer[] integers) {
                 

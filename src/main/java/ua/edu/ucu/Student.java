@@ -36,4 +36,17 @@ class Student {
         return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return name.equals(((Student)obj).getName()) && 
+        surname.equals(((Student)obj).getSurname()) &&
+        ((Integer)year).equals(((Student)obj).getYear()) &&
+        ((Double)GPA).equals(((Student)obj).getGPA());
+    }
+    
+    @Override
+    public int hashCode() {
+        return name.hashCode() + 43*surname.hashCode() + year + 7*(int)GPA;
+    }
+
 }
