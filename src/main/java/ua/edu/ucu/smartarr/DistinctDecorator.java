@@ -10,6 +10,7 @@ public class DistinctDecorator extends SmartArrayDecorator {
 
     public DistinctDecorator(SmartArray smartArray) {
         super(smartArray);
+        dist = new ArrayList<Object>();
         removeDuplicates();
     }
 
@@ -30,7 +31,7 @@ public class DistinctDecorator extends SmartArrayDecorator {
     }
 
     private void removeDuplicates() {
-        arr = Arrays.asList(arr).stream().filter(this::contains).toArray();
+        arr = Arrays.asList(smartArray.toArray()).stream().filter(this::contains).toArray();
         dist.clear();
     }
 

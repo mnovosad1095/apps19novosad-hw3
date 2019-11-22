@@ -14,7 +14,7 @@ import ua.edu.ucu.smartarr.SortDecorator;
 public class SmartArrayApp {
 
     public static void main(String[] args) {
-            BaseArray a = new BaseArray(new Integer[]{1,2,3,4,5});
+            BaseArray a = new BaseArray(new Integer[]{1,2,3,2,4,5});
             MyFunction mf = new MyFunction(){
             
                 @Override
